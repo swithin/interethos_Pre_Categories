@@ -1,0 +1,31 @@
+--- 
+- !ruby/object:BeingsIssue 
+  attributes: 
+    updated_at: 2009-01-21 08:15:06
+    id: "1"
+    being_id: "1"
+    issue_id: "1"
+    passion_id: 
+    created_at: 2009-01-18 05:22:20
+  attributes_cache: {}
+
+- !ruby/object:BeingsIssue 
+  attributes: 
+    updated_at: 2009-01-21 08:15:07
+    id: "2"
+    being_id: "2"
+    issue_id: "2"
+    passion_id: 
+    created_at: 2009-01-18 05:22:29
+  attributes_cache: {}
+
+- !ruby/object:BeingsIssue 
+  attributes: 
+    updated_at: 2009-01-21 08:15:07
+    id: "3"
+    being_id: "3"
+    issue_id: "1"
+    passion_id: 
+    created_at: 2009-01-18 05:22:37
+  attributes_cache: {}
+

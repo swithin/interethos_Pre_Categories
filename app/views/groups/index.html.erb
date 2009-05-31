@@ -1,0 +1,25 @@
+<% @title = 'Groups' %>
+
+<table>
+  <tr>
+    <th align="left">Name</th>
+    <th align="left">Description</th>
+    <th align="left">Privacy</th>
+    <th align="left">Realm</th>
+  </tr>
+
+<% for group in @groups %>
+  <tr>
+    <td align="left"><%=h group.name %></td>
+    <td align="left"><%=h group.description %></td>
+    <td align="left"><%=h group.privacy %></td>
+    <td align="left"><%=h group.realm %></td>
+    <td align="left"><%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', edit_group_path(group) %></td>
+    <td align="left"><%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', group, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New group', new_group_path %>

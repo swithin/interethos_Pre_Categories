@@ -1,0 +1,9 @@
+
+
+<tr>
+    <td><li><%= link_to (Issue.find(issue.issue_id)).question_or_uri, edit_issue_path(Issue.find(issue.issue_id)) %></li></td>
+    <td><%= indent -%></td>
+    <td><%= link_to '<img src="/images/delta.jpg" border="0">', edit_happenings_issue_path(issue) -%></td>
+    <td><%= indent -%></td>
+    <td><%= link_to '<img src="/images/remove.jpg" border="0">', happenings_issue_path(issue), :confirm => 'Are you sure?', :method => :delete -%></td>
+</tr>

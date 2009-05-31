@@ -1,0 +1,25 @@
+<% @title = 'New Realm' %>
+
+<% form_for(@realm) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :parent_realm %><br />
+    <%= tree_select(Realm.find(:all, :conditions => "parent_id = 1"),
+                        'realm', 'parent_id', @realm) %>
+  </p>
+  <p>
+    <%= f.label :realm_name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label "add similar" %><br />
+    <%= check_box_tag 'add_similar' %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= javascript_tag "$('realm_name').focus()" %>
+

@@ -1,0 +1,10 @@
+
+
+<tr>
+    <td>
+        <li><%= link_to (Happening.find(happening.happening_id)).name, happening %></li>
+    </td>
+    <td>
+        <%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', edit_beings_happening_path(happening) %><%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', beings_happening_path(happening), :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+</tr>

@@ -1,0 +1,28 @@
+--- 
+- !ruby/object:HappeningsIssue 
+  attributes: 
+    updated_at: 2009-01-21 07:03:06
+    id: "1"
+    issue_id: "2"
+    happening_id: "1"
+    created_at: 2009-01-18 05:48:14
+  attributes_cache: {}
+
+- !ruby/object:HappeningsIssue 
+  attributes: 
+    updated_at: 2009-01-22 01:01:09
+    id: "3"
+    issue_id: "1"
+    happening_id: "2"
+    created_at: 2009-01-22 01:01:09
+  attributes_cache: {}
+
+- !ruby/object:HappeningsIssue 
+  attributes: 
+    updated_at: 2009-01-22 07:46:49
+    id: "5"
+    issue_id: "3"
+    happening_id: "2"
+    created_at: 2009-01-22 07:46:49
+  attributes_cache: {}
+

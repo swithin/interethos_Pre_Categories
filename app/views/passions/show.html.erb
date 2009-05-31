@@ -1,0 +1,19 @@
+<% @title = 'Passion' %>
+
+<p>
+  <b>Name:</b>
+  <%=h @passion.name %>
+</p>
+
+<p>
+  <b>Issue:</b>
+  <%=h @passion.issue.question_or_uri %>
+</p>
+
+<p>
+  <b>Realm:</b>
+  <%=h @passion.realm.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_passion_path(@passion) %> | 

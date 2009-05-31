@@ -1,0 +1,18 @@
+<% @title = 'New Being Happening' %>
+
+<% form_for(@beings_happening) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :happening %><br />
+    <%= collection_select(:beings_happening, :happening_id, Happening.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.label :being %><br />
+    <%= collection_select(:beings_happening, :being_id, Being.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+

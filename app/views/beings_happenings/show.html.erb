@@ -1,0 +1,14 @@
+<% @title = 'Being Happening' %>
+
+<p>
+  <b>Being:</b>
+  <%=h @beings_happening.being.first_name %> <%= @beings_happening.being.last_name %>
+</p>
+
+<p>
+  <b>Happening:</b>
+  <%=h @beings_happening.happening.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_beings_happening_path(@beings_happening) %>

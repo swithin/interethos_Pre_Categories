@@ -1,0 +1,12 @@
+<p>
+  <b>Happening:</b>
+  <%=h @happenings_issue.happening.name %>
+</p>
+
+<p>
+  <b>Issue:</b>
+  <%=h @happenings_issue.issue.question_or_uri %>
+</p>
+
+
+<%= link_to 'Edit', edit_happenings_issue_path(@happenings_issue) %>

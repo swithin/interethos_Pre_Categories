@@ -1,0 +1,197 @@
+<% @title = 'Realms' %>
+
+<p><%= link_to 'Add a new root Realm', new_realm_path %></p>
+
+
+<!-- Level ONE -->
+<% for realm in Realm.find_all_by_parent_id(1, :order => "name") %>
+<script type="text/javascript">
+//browser detection
+ 
+var ns4 = (document.layers);
+var ie4 = (document.all && !document.getElementById);
+var ie5 = (document.all && document.getElementById);
+var ns6 = (!document.all && document.getElementById);
+//SHOW
+function show<%= realm.id %>(id){
+// Netscape 4
+if(ns4){
+document.layers[id].display = "";
+}
+// Explorer 4
+else if(ie4){
+document.all[id].style.display = "";
+}
+// W3C - Netscape 6+
+else if(ns6){
+document.getElementById(id).style.display = "";
+document.getElementById('showimg<%= realm.id %>').style.display = "none";
+document.getElementById('hideimg<%= realm.id %>').style.display = "";
+// setCookie('show_notes',1,1);
+}
+// W3C - IE5
+else if(ie5){
+var elem=document.getElementById(id)
+elem.style.display="";
+var elemshowimg=document.getElementById('showimg<%= realm.id %>')
+elemshowimg.style.display="none";
+var elemhideimg=document.getElementById('hideimg<%= realm.id %>')
+elemhideimg.style.display="";
+// setCookie('show_notes',1,1);
+}
+ 
+}
+ 
+//HIDE
+function hide<%= realm.id %>(id){
+// Netscape 4
+if(ns4){
+document.layers[id].display = "none";
+}
+// Explorer 4
+else if(ie4){
+document.all[id].style.display = "none";
+}
+// W3C - Explorer 5+ and Netscape 6+
+else if(ie5 || ns6){
+document.getElementById(id).style.display = "none";
+document.getElementById('showimg<%= realm.id %>').style.display = "";
+document.getElementById('hideimg<%= realm.id %>').style.display = "none";
+// setCookie('show_notes',0,-1);
+}
+}
+</script>
+
+<% @Realm_Branch_Root = realm.id %>
+<%# Note: this "Current_Realm_Root" session variable is only set in the "Realm Controller" if it comes in as "...&Root_id=#" in the URL, as when someone is adding another realm to a branch %>
+<% if !session[:uroot_id] %>
+    <%# hide branch %>
+        <% realms_display = "none" %>
+        <img id="showimg<%= realm.id -%>" src="/images/open.jpg" onclick="show<%= realm.id -%>('tree<%= realm.id -%>')" style="display: ;"><img id="hideimg<%= realm.id -%>" src="/images/close.jpg" onclick="hide<%= realm.id -%>('tree<%= realm.id -%>')" style="display: none;">&nbsp;&nbsp;<strong><%= h(realm.name) -%></strong>
+<% else %>
+    <%# SHOW BRANCH !!! %>
+    <% if session[:uroot_id] == @Realm_Branch_Root %>
+        <% realms_display = "" %>
+        <img id="showimg<%= realm.id -%>" src="/images/open.jpg" onclick="show<%= realm.id -%>('tree<%= realm.id -%>')" style="display: none;"><img id="hideimg<%= realm.id -%>" src="/images/close.jpg" onclick="hide<%= realm.id -%>('tree<%= realm.id -%>')" style="display: ;">&nbsp;&nbsp;<strong><%= h(realm.name) -%></strong>
+    <%# hide branch %>
+    <% else %>
+        <% realms_display = "none" %>
+        <img id="showimg<%= realm.id -%>" src="/images/open.jpg" onclick="show<%= realm.id -%>('tree<%= realm.id -%>')" style="display: ;"><img id="hideimg<%= realm.id -%>" src="/images/close.jpg" onclick="hide<%= realm.id -%>('tree<%= realm.id -%>')" style="display: none;">&nbsp;&nbsp;<strong><%= h(realm.name) -%></strong>
+    <% end %>
+<% end %>
+        <%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', :controller => 'realms', :action => 'edit', :id => realm.id, :uroot_id => @Realm_Branch_Root %>
+        <%= indent %><%= link_to '<img src="/images/add.jpg" border="0">', new_realm_path(:parent_id => realm.id, :uroot_id => @Realm_Branch_Root) %>
+        <!-- branch end? -->
+        <% if Realm.find_all_by_parent_id(realm.id).empty? %>
+            <%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', realm, :confirm => 'Are you sure?', :method => :delete %>
+            <br />
+        <!-- branch continues... -->
+        <% else %>
+            <br /><span id="tree<%= realm.id %>" style="display: <%= realms_display %>;">
+                <ul><% for realm in Realm.find_all_by_parent_id(realm.id, :order => "name") %>
+                <!-- Level TWO -->
+                    <li type="disc">
+                    <em><strong><%= h(realm.name) -%></strong></em>
+                        <%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', :controller => 'realms', :action => 'edit', :id => realm.id, :uroot_id => @Realm_Branch_Root %>
+                        <%= indent %><%= link_to '<img src="/images/add.jpg" border="0">', new_realm_path(:parent_id => realm.id, :uroot_id => @Realm_Branch_Root) %>
+                        <!-- branch end? -->
+                        <% if Realm.find_all_by_parent_id(realm.id).empty? %>
+                            <%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', realm, :confirm => 'Are you sure?', :method => :delete %></li>
+                        <!-- branch continues... -->
+                        <% else %>
+                            </li>
+                            <ul><% for realm in Realm.find_all_by_parent_id(realm.id, :order => "name") %>
+                            <!-- Level THREE -->
+                                <li type="circle">
+                                <%= h(realm.name) -%>
+                                    <%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', :controller => 'realms', :action => 'edit', :id => realm.id, :uroot_id => @Realm_Branch_Root %>
+                                    <%= indent %><%= link_to '<img src="/images/add.jpg" border="0">', new_realm_path(:parent_id => realm.id, :uroot_id => @Realm_Branch_Root) %>
+                                    <!-- branch end? -->
+                                    <% if Realm.find_all_by_parent_id(realm.id).empty? %>
+                                        <%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', realm, :confirm => 'Are you sure?', :method => :delete %></li>
+                                    <!-- branch continues... -->
+                                    <% else %>
+                                        </li>
+                                        <ul><% for realm in Realm.find_all_by_parent_id(realm.id, :order => "name") %>
+                                        <!-- Level FOUR -->
+                                            <li type="circle">
+                                            <em><%= h(realm.name) -%></em>
+                                                <%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', :controller => 'realms', :action => 'edit', :id => realm.id, :uroot_id => @Realm_Branch_Root %>
+                                                <%= indent %><%= link_to '<img src="/images/add.jpg" border="0">', new_realm_path(:parent_id => realm.id, :uroot_id => @Realm_Branch_Root) %>
+                                                <!-- branch end? -->
+                                                <% if Realm.find_all_by_parent_id(realm.id).empty? %>
+                                                    <%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', realm, :confirm => 'Are you sure?', :method => :delete %></li>
+                                                <!-- branch continues... -->
+                                                <% else %>
+                                                    </li>
+                                                    <ul><% for realm in Realm.find_all_by_parent_id(realm.id, :order => "name") %>
+                                                        <!-- Level FIVE -->
+                                                            <li type="circle">
+                                                            <em><%= h(realm.name) -%></em>
+                                                                <%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', :controller => 'realms', :action => 'edit', :id => realm.id, :uroot_id => @Realm_Branch_Root %>
+                                                                <%= indent %><%= link_to '<img src="/images/add.jpg" border="0">', new_realm_path(:parent_id => realm.id, :uroot_id => @Realm_Branch_Root) %>
+                                                                <!-- branch end? -->
+                                                                <% if Realm.find_all_by_parent_id(realm.id).empty? %>
+                                                                    <%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', realm, :confirm => 'Are you sure?', :method => :delete %></li>
+                                                                <!-- branch continues... -->
+                                                                <% else %>
+                                                                    </li>
+                                                                    <ul><% for realm in Realm.find_all_by_parent_id(realm.id, :order => "name") %>
+                                                                        <!-- Level SIX -->
+                                                                            <li type="circle">
+                                                                            <em><%= h(realm.name) -%></em>
+                                                                                <%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', :controller => 'realms', :action => 'edit', :id => realm.id, :uroot_id => @Realm_Branch_Root %>
+                                                                                <%= indent %><%= link_to '<img src="/images/add.jpg" border="0">', new_realm_path(:parent_id => realm.id, :uroot_id => @Realm_Branch_Root) %>
+                                                                                <!-- branch end? -->
+                                                                                <% if Realm.find_all_by_parent_id(realm.id).empty? %>
+                                                                                    <%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', realm, :confirm => 'Are you sure?', :method => :delete %></li>
+                                                                                <!-- branch continues... -->
+                                                                                <% else %>
+                                                                                    </li>
+                                                                                    <ul><% for realm in Realm.find_all_by_parent_id(realm.id, :order => "name") %>
+                                                                                    <!-- Level SEVEN -->
+                                                                                            <li type="circle">
+                                                                                                <table>
+                                                                                                    <tr>
+                                                                                                        <td><%= h(realm.name) -%>
+                                                                                                            <%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', :controller => 'realms', :action => 'edit', :id => realm.id, :uroot_id => @Realm_Branch_Root %>
+                                                                                                            <%= indent %><%= link_to '<img src="/images/add.jpg" border="0">', new_realm_path(:parent_id => realm.id, :uroot_id => @Realm_Branch_Root) %>
+                                                                                                            <%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', realm, :confirm => 'Are you sure?', :method => :delete %>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </li>
+                                                                                        <% end %>
+                                                                                    <!-- / Level SEVEN -->
+                                                                                    </ul>
+                                                                                    <% end %>
+                                                                                </li>
+                                                                            <% end %>
+                                                                        <!-- / Level SIX -->
+                                                                    </ul>
+                                                                    <% end %>
+                                                                </li>
+                                                            <% end %>
+                                                        <!-- / Level FIVE -->
+                                                    </ul>
+                                                    <% end %>
+                                                </li>
+                                            <% end %>
+                                        <!-- / Level FOUR -->
+                                        </ul>
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                            <!-- / Level THREE -->
+                            </ul>
+                            <% end %>
+                        </li>
+                    <% end %>
+                <!-- / Level TWO -->
+                </ul>
+            </span>
+        <% end %>
+<% end %>
+<!-- / Level ONE -->
+
+

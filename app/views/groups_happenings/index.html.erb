@@ -1,0 +1,20 @@
+<% @title = 'Groups & Happenings' %>
+<table>
+<% @groups_happenings.group_by(&:group).sort.each do |group, @happenings| %>
+  <tr>
+    <td><strong><%= link_to group.name, group %><% @group_id = group.id %></strong></td>
+  </tr>
+  <tr>
+    <td>
+        <ul>
+            <%= render :partial => 'happening', :collection => @happenings %>
+        </ul>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add a new Group', new_group_path %><br />
+<%= link_to 'Add an existing Group to an existing Happening', new_groups_happening_path %>

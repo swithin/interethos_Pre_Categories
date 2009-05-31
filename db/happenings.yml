@@ -1,0 +1,37 @@
+--- 
+- !ruby/object:Happening 
+  attributes: 
+    name: World AID Conference
+    realm_id: "132"
+    updated_at: 2009-01-21 15:42:56
+    id: "1"
+    description: Goal of alleviating the food and health crisis that are sweeping the globe.
+    location: Geneva, Switzerland
+    date_and_time: "2009-01-10"
+    created_at: 2009-01-11 05:25:37
+  attributes_cache: {}
+
+- !ruby/object:Happening 
+  attributes: 
+    name: Global Countries Day
+    realm_id: "24"
+    updated_at: 2009-01-22 01:01:43
+    id: "2"
+    description: ""
+    location: Babson College
+    date_and_time: "2009-01-11"
+    created_at: 2009-01-11 06:33:02
+  attributes_cache: {}
+
+- !ruby/object:Happening 
+  attributes: 
+    name: New Event Sunday
+    realm_id: "75"
+    updated_at: 2009-01-21 07:03:05
+    id: "3"
+    description: ""
+    location: ""
+    date_and_time: "2009-01-11"
+    created_at: 2009-01-11 17:29:59
+  attributes_cache: {}
+

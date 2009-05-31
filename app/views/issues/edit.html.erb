@@ -1,0 +1,15 @@
+<h1>Editing issue</h1>
+
+<% form_for(@issue) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :question_or_uri %><br />
+    <%= f.text_field :question_or_uri, :size=>90 %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= javascript_tag "$('issue_question_or_uri').focus()" %>

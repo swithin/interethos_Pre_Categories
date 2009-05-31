@@ -1,0 +1,18 @@
+<% @title = 'Edit Happening Issue' %>
+
+<% form_for(@happenings_issue) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :happening %><br />
+    <%= collection_select(:happenings_issue, :happening_id, Happening.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.label :issue %><br />
+    <%= collection_select(:happenings_issue, :issue_id, Issue.find(:all), :id, :question_or_uri, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+

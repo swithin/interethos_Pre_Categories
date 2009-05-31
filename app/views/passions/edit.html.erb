@@ -1,0 +1,22 @@
+<% @title = 'Editing a Passion' %>
+
+<% form_for(@passion) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= label(:passion, :id, 'Issue') %><br />
+    <%= collection_select(:passion, :issue_id, Issue.find(:all), :id, :question_or_uri, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.label :realm %><br />
+    <%= tree_select(Realm.find(:all, :conditions => "parent_id = 1"),
+                        'passion', 'realm_id', @passion.realm) %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>

@@ -1,0 +1,18 @@
+<% @title = 'Add Group Happening' %>
+
+<% form_for(@groups_happening) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= label(:group, :id, 'group') %>
+    <%= collection_select(:groups_happening, :group_id, Group.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= label(:happening, :id, 'happening') %>
+    <%= collection_select(:groups_happening, :happening_id, Happening.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+

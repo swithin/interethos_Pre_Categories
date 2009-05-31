@@ -1,0 +1,23 @@
+<% @title = 'Being Issue' %>
+
+<p>
+  <b>Being:</b>
+  <%=h @beings_issue.being.first_name %> <%=h @beings_issue.being.last_name %>
+</p>
+
+<p>
+  <b>Issue:</b>
+  <%=h @beings_issue.issue.question_or_uri %>
+</p>
+
+<p>
+  <b>Passion:</b>
+  <% if @beings_issue.passion %>
+    <%=h @beings_issue.passion_id.name %>
+  <% else %>
+    not set yet
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_beings_issue_path(@beings_issue) %>

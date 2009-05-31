@@ -1,0 +1,23 @@
+<% @title = 'Editing Being Issue' %>
+
+<% form_for(@beings_issue) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :being %><br />
+    <strong><em><%= @beings_issue.being.name %></em></strong>
+    <%# collection_select(:beings_issue, :being_id, Being.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.label :issue %><br />
+    <strong><em><%= @beings_issue.issue.question_or_uri %></em></strong>
+	<%# collection_select(:beings_issue, :issue_id, Issue.find(:all), :id, :question_or_uri, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= label(:passion, :id, 'Passion') %><br />
+    <%= collection_select(:beings_issue, :passion_id, @passions, :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>

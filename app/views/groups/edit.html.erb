@@ -1,0 +1,28 @@
+<% @title = 'Editing Group' %>
+
+<% form_for(@group) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :realm %><br />
+    <%= tree_select(Realm.find(:all, :conditions => "parent_id = 1"),
+                        'group', 'realm_id', @group.realm) %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 4 %>
+  </p>
+  <p>
+    <%= f.label :privacy %><br />
+    <%= f.text_field :privacy %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @group %> | 

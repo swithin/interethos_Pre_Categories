@@ -1,0 +1,27 @@
+<% @title = 'New Being' %>
+
+<% form_for(@being) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= label(:validation, :id, 'validation') %>
+    <%= collection_select(:being, :validation_id, Validation.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= javascript_tag "$('being_first_name').focus()" %>

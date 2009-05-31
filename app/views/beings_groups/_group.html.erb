@@ -1,0 +1,10 @@
+
+
+<tr>
+    <td>
+        <li><%= link_to (Group.find(group.group_id)).name, group_path(Group.find(group.group_id)) %></li>
+    </td>
+    <td>
+        <%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', edit_beings_group_path(group) %><%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', beings_group_path(group), :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+</tr>

@@ -1,0 +1,86 @@
+<!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+class IssuesPassionsController < ApplicationController
+  # GET /issues_passions
+  # GET /issues_passions.xml
+  def index
+    @issues_passions = IssuesPassion.find(:all)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @issues_passions }
+    end
+  end
+
+  # GET /issues_passions/1
+  # GET /issues_passions/1.xml
+  def show
+    @issues_passion = IssuesPassion.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @issues_passion }
+    end
+  end
+
+  # GET /issues_passions/new
+  # GET /issues_passions/new.xml
+  def new
+    @issues_passion = IssuesPassion.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @issues_passion }
+    end
+  end
+
+  # GET /issues_passions/1/edit
+  def edit
+    @issues_passion = IssuesPassion.find(params[:id])
+  end
+
+  # POST /issues_passions
+  # POST /issues_passions.xml
+  def create
+    @issues_passion = IssuesPassion.new(params[:issues_passion])
+
+    respond_to do |format|
+      if @issues_passion.save
+        flash[:notice] = 'IssuesPassion was successfully created.'
+        format.html { redirect_to(issues_passions_path) }
+        format.xml  { render :xml => @issues_passion, :status => :created, :location => @issues_passion }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @issues_passion.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /issues_passions/1
+  # PUT /issues_passions/1.xml
+  def update
+    @issues_passion = IssuesPassion.find(params[:id])
+
+    respond_to do |format|
+      if @issues_passion.update_attributes(params[:issues_passion])
+        flash[:notice] = 'IssuesPassion was successfully updated.'
+        format.html { redirect_to(issues_passions_path) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @issues_passion.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /issues_passions/1
+  # DELETE /issues_passions/1.xml
+  def destroy
+    @issues_passion = IssuesPassion.find(params[:id])
+    @issues_passion.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(issues_passions_url) }
+      format.xml  { head :ok }
+    end
+  end
+end

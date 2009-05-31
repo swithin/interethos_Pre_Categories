@@ -1,0 +1,27 @@
+<% @title = 'Beings & ...' %>
+
+<table>
+  <tr>
+    <th>Being</th>
+    <th><%= indent %></th>
+    <th>Issue</th>
+    <th><%= indent %></th>
+    <th>Passion</th>
+  </tr>
+
+<% for beings_issue in @beings_issues %>
+  <tr>
+    <td><%=h beings_issue.being.first_name %> <%=h beings_issue.being.last_name %></td>
+    <td><%= indent %></td>
+    <td><%=h beings_issue.issue.question_or_uri %></td>
+    <td><%= indent %></td>
+    <td align="center"><% if beings_issue.passion %><%=h beings_issue.passion.name %><% else %>?<% end %></td>
+    <td><%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', edit_beings_issue_path(beings_issue) %></td>
+    <td><%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', beings_issue, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New beings_issue', new_beings_issue_path %>

@@ -1,0 +1,19 @@
+--- 
+- !ruby/object:User 
+  attributes: 
+    name: ""
+    salt: d7b4c7f4840612876d3fe7cef2bb5c82aa4dbe78
+    updated_at: 2009-01-16 07:14:25
+    activated_at: 2009-01-16 07:14:25
+    crypted_password: d53b68ed7f825311813723fb0e9fdc478768dbe7
+    deleted_at: 
+    remember_token_expires_at: 
+    activation_code: 
+    id: "1"
+    remember_token: 
+    login: swithin
+    email: josh@swithin.com
+    created_at: 2009-01-16 06:59:17
+    state: active
+  attributes_cache: {}
+

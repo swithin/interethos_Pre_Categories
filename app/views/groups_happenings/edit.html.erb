@@ -1,0 +1,19 @@
+<% @title = 'Editing Group Happening' %>
+
+<% form_for(@groups_happening) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :group %><br />
+    <%= collection_select(:groups_happening, :group_id, Group.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.label :happening %><br />
+    <%= collection_select(:groups_happening, :happening_id, Happening.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @groups_happening %> | 

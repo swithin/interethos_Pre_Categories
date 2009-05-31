@@ -1,0 +1,45 @@
+--- 
+- !ruby/object:Being 
+  attributes: 
+    validation_id: "1"
+    updated_at: 2009-01-21 07:02:59
+    id: "1"
+    first_name: Josh
+    last_name: Shortlidge
+    email: josh@swithin.com
+    created_at: 2009-01-02 04:28:18
+  attributes_cache: {}
+
+- !ruby/object:Being 
+  attributes: 
+    validation_id: "3"
+    updated_at: 2009-01-21 07:02:59
+    id: "2"
+    first_name: Terri
+    last_name: Shortlidge
+    email: terri@swithin.com
+    created_at: 2009-01-02 04:28:18
+  attributes_cache: {}
+
+- !ruby/object:Being 
+  attributes: 
+    validation_id: "2"
+    updated_at: 2009-01-21 07:02:59
+    id: "3"
+    first_name: Tom
+    last_name: Kiefer
+    email: tom@gmail.com
+    created_at: 2009-01-02 04:28:18
+  attributes_cache: {}
+
+- !ruby/object:Being 
+  attributes: 
+    validation_id: "3"
+    updated_at: 2009-01-21 07:02:59
+    id: "4"
+    first_name: John
+    last_name: Doe
+    email: jd@email.com
+    created_at: 2009-01-21 07:02:59
+  attributes_cache: {}
+

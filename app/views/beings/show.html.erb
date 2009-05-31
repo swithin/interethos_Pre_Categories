@@ -1,0 +1,24 @@
+<% @title = 'Show Being' %>
+
+<p>
+  <b>First name:</b>
+  <%=h @being.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h @being.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @being.email %>
+</p>
+
+<p>
+  <b>Validation:</b>
+  <%=h @being.validation.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_being_path(@being) %> | 

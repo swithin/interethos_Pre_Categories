@@ -1,0 +1,24 @@
+<% @title = 'Show Group' %>
+
+<p>
+  <b>Name:</b>
+  <%=h @group.name %>
+</p>
+
+<p>
+  <b>Realm:</b>
+  <%=h @group.realm.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @group.description %>
+</p>
+
+<p>
+  <b>Privacy:</b>
+  <%=h @group.privacy %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> | 

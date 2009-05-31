@@ -1,0 +1,18 @@
+<% @title = 'Add Being to a Group' %>
+
+<% form_for(@beings_group) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= label(:being, :id, 'being') %>
+    <%= collection_select(:beings_group, :being_id, Being.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= label(:group, :id, 'group') %>
+    <%= collection_select(:beings_group, :group_id, Group.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.submit "Add" %>
+  </p>
+<% end %>
+

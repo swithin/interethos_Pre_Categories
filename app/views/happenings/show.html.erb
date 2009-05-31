@@ -1,0 +1,34 @@
+<% @title = 'Show Happening' %>
+
+<p>
+  <b>Name:</b>
+  <%=h @happening.name %>
+</p>
+
+<p>
+  <b>Realm:</b>
+  <%=h @happening.realm.name %>
+</p>
+
+<%# <p> %>
+  <%# <b>Group:</b> %>
+  <%# <%=h @happening.group %>
+<%# </p> %>
+
+<p>
+  <b>Date and time:</b>
+  <%=h @happening.date_and_time.to_formatted_s(:long_ordinal) %>
+</p>
+
+<p>
+  <b>Locaton:</b>
+  <%=h @happening.location %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @happening.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_happening_path(@happening) %> | 

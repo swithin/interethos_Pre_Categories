@@ -1,0 +1,25 @@
+<% @title = 'Beings' %>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th colspan="3">Validation</th>
+  </tr>
+
+<% for being in @beings %>
+  <tr>
+    <td><%=h being.first_name %></td>
+    <td><%=h being.last_name %></td>
+    <td><%=h being.email %></td>
+    <td><%=h being.validation.name %></td>
+    <td><%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', edit_being_path(being) %></td>
+    <td><%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', being, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Being', new_being_path %>

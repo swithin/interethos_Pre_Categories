@@ -1,0 +1,10 @@
+
+
+<tr>
+    <td>
+        <li><%= link_to (Passion.find(passion)).name, passion %></li>
+    </td>
+    <td>
+        <%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', edit_passion_path(passion) %><%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', passion_path(passion), :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+</tr>

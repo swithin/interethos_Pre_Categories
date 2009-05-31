@@ -1,0 +1,10 @@
+
+
+<tr>
+    <td>
+        <li><%= link_to (Being.find(being.being_id)).name, being %></li>
+    </td>
+    <td>
+        <%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', edit_beings_group_path(being) %><%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', beings_group_path(being), :confirm => 'Are you sure?', :method => :delete %>
+    </td>
+</tr>

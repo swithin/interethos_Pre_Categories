@@ -1,0 +1,33 @@
+<% @title = 'New Happening' %>
+
+<% form_for(@happening) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :realm %><br />
+    <%= tree_select(Realm.find(:all, :conditions => "parent_id = 1"),
+                        'event', 'realm_id') %>
+  </p>
+  <p>
+    <%= f.label :date_and_time %><br />
+    <%= f.date_select :date_and_time %>
+    <%= f.time_select :date_and_time %>
+  </p>
+  <p>
+    <%= f.label :location %><br />
+    <%= f.text_area :location, :cols => 50, :rows => 3 %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :cols => 50, :rows => 3 %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= javascript_tag "$('happening_name').focus()" %>

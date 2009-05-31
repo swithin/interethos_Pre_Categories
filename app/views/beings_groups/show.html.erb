@@ -1,0 +1,13 @@
+<% @title = 'Being Group' %>
+<p>
+  <b>Group:</b>
+  <%=h @beings_group.group.name %>
+</p>
+
+<p>
+  <b>Being:</b>
+  <%=h @beings_group.being.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_beings_group_path(@beings_group) %>

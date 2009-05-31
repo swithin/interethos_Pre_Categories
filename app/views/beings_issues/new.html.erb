@@ -1,0 +1,17 @@
+<% @title = 'New Being Issue' %>
+
+<% form_for(@beings_issue) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :being_id %><br />
+    <%= collection_select(:beings_issue, :being_id, Being.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.label :issue %><br />
+    <%= collection_select(:beings_issue, :issue_id, Issue.find(:all), :id, :question_or_uri, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

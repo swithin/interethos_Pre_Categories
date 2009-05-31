@@ -1,0 +1,17 @@
+<% @title = 'Editing Being Group' %>
+
+<% form_for(@beings_group) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= label(:being, :id, 'Being') %>
+    <%= collection_select(:beings_group, :being_id, Being.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= label(:group, :id, 'Group') %>
+    <%= collection_select(:beings_group, :group_id, Group.find(:all), :id, :name, options = {}, html_options = {}) %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>

@@ -1,0 +1,30 @@
+<% @title = 'Happenings' %>
+
+<table>
+  <tr>
+    <th>Happening</th>
+    <th>Locaton</th>
+    <th>Date and time</th>
+    <th>Description</th>
+    <th>Group</th>
+    <th>Realm</th>
+  </tr>
+
+<% @happenings.group_by(&:group).sort.each do |group, @happenings| %>
+<%# for happening in @groups %>
+  <tr>
+    <td><%=h happening.name %></td>
+    <td><%=h happening.location %></td>
+    <td><%=h happening.date_and_time %></td>
+    <td><%=h happening.description %></td>
+    <td><%=h happening.group.name %></td>
+    <td><%=h happening.realm.name %></td>
+    <td><%= indent %><%= link_to '<img src="/images/delta.jpg" border="0">', edit_happening_path(happening) %></td>
+    <td><%= indent %><%= link_to '<img src="/images/remove.jpg" border="0">', happening, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New happening', new_happening_path %>

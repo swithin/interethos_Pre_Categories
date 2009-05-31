@@ -1,0 +1,21 @@
+<% @title = 'Happenings & Issues' %>
+
+<table>
+<% @happenings_issues.group_by(&:happening).sort.each do |happening, @issues| %>
+  <tr>
+    <td><strong><%= link_to happening.name, happening %><% @happening_id = happening.id %></strong></td>
+  </tr>
+  <tr>
+    <td>
+        <ul><table cellpadding="0" cellspacing="0" border="0">
+            <%= render :partial => 'issue', :collection => @issues %>
+        </table></ul>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add a new Happening', new_happening_path %><br />
+<%= link_to 'Add an existing Happening to an existing Issue', new_happenings_issue_path %>

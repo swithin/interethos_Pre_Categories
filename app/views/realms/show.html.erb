@@ -1,0 +1,13 @@
+<% @title = 'Show Realm' %>
+<p>
+  <b>Name:</b>
+  <%=h @realm.name %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%=h @realm.parent %>
+</p>
+
+
+<%= link_to 'Edit', edit_realm_path(@realm) %>
